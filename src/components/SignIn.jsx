@@ -1,9 +1,24 @@
 import background from "../img/background.png";
 import logo from "../img/logo_long.png";
 
+import toast from "react-hot-toast";
 import React, { useEffect, useState } from "react";
 
 function SignIn() {
+
+  const [inputValue, setInputValue] = useState('');
+  const [inputValuePas, setInputValuePas] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!inputValue && !inputValuePas) {
+      toast.error('Something went wrong!');
+    } else {
+      // proceed with form submission
+      toast.success('You have successfully sign in!');
+    }
+
+  };
   // Select Staff/Master START
   const [selectedTab, setSelectedTab] = useState("staff");
   const handleTabClick = (tabId) => {
@@ -104,6 +119,7 @@ function SignIn() {
 
           <form
             action=""
+            onSubmit={handleSubmit}
             className="mt-[20px] flex flex-col justify-center items-center"
           >
             <div className="w-[300px] md:w-[350px] lg:w-[350px] h-[65px] flex justify-center items-center rounded-[10px] border-2 border-custom-green-15">
@@ -118,6 +134,8 @@ function SignIn() {
               <div className="relative flex-auto">
                 <input
                   type="text"
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
                   id="floating_user"
                   className="block px-2.5 pb-2.5 pt-5 w-full text-[14px] font-bold  text-custom-green-dark appearance-none bg-transparent focus:bg-transparent focus:outline-none ring-none focus:ring-none peer"
                   placeholder=""
@@ -145,6 +163,8 @@ function SignIn() {
               <div className="relative flex-auto">
                 <input
                   type="password"
+                  value={inputValuePas}
+                  onChange={(e) => setInputValuePas(e.target.value)}
                   id="floating_password"
                   className="block px-2.5 pb-2.5 pt-5 w-full text-[14px] font-bold  text-custom-green-dark appearance-none bg-transparent focus:outline-none focus:ring-0 peer"
                   placeholder=""

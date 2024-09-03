@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Staff / Master Account Content START */
+.indicator {
+  transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+.tab-panel {
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+/* Staff / Master Account Content END */

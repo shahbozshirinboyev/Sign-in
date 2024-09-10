@@ -19,56 +19,14 @@ function SignIn() {
     }
 
   };
-  // Select Staff/Master START
-  const [selectedTab, setSelectedTab] = useState("staff");
-  const handleTabClick = (tabId) => {
-    setSelectedTab(tabId);
-  };
-  useEffect(() => {
-    let tabs = document.querySelectorAll(".tab");
-    let indicator = document.querySelector(".indicator");
-    let panels = document.querySelectorAll(".tab-panel");
 
-    // Set initial position of the indicator
-    indicator.style.width = tabs[0].getBoundingClientRect().width + "px";
-    indicator.style.left =
-      tabs[0].getBoundingClientRect().left -
-      tabs[0].parentElement.getBoundingClientRect().left +
-      "px";
-
-    // Event listeners for tab clicks
-    tabs.forEach((tab) => {
-      tab.addEventListener("click", () => {
-        let tabTarget = tab.getAttribute("aria-controls");
-
-        // Animate indicator
-        indicator.style.width = tab.getBoundingClientRect().width + "px";
-        indicator.style.left =
-          tab.getBoundingClientRect().left -
-          tab.parentElement.getBoundingClientRect().left +
-          "px";
-
-        // Show/Hide panels with smooth transition
-        panels.forEach((panel) => {
-          let panelId = panel.getAttribute("id");
-          if (tabTarget === panelId) {
-            panel.classList.remove("invisible", "opacity-0");
-            panel.classList.add("visible", "opacity-100");
-          } else {
-            panel.classList.add("invisible", "opacity-0");
-          }
-        });
-      });
-    });
-  }, []);
-  // Select Staff/Master END
   return (
     <>
       <div
-        className="w-screen h-screen flex items-center justify-center bg-cover bg-center"
+        className="w-full h-screen flex items-center justify-center bg-cover bg-center"
         style={{ backgroundImage: `url(${background})` }}
       >
-        <div className="w-[370px] md:w-[480px]  lg:w-[600px]  h-[520px] md:h-[600px] lg:h-[750px] bg-white shadow-md">
+        <div className="w-[370px] md:w-[480px]  lg:w-[600px]  h-[450px] md:h-[530px] lg:h-[680px] bg-white shadow-md">
 
           <div className="mt-[35px] md:mt-[50px] lg:mt-[80px] mb-[20px] md:mb-[40px] lg:mb-[80px] flex justify-center items-center">
             <img className="h-7 md:h-8 lg:h-11" src={logo} alt="" />
@@ -79,42 +37,6 @@ function SignIn() {
             <p className="text-[10px] md:text-[12px] lg:text-[14px] font-medium opacity-60">
               Welcome Back, Please enter Your details
             </p>
-          </div>
-
-          <div
-            role="tablist"
-            aria-label="tabs"
-            className="relative mt-[20px] md:mt-[20px] lg:mt-[20px] w-[300px] md:w-[350px] lg:w-[350px] mx-auto h-[50px] grid grid-cols-2 items-center px-[3px] rounded-[10px] bg-custom-green-15 overflow-hidden transition"
-          >
-            <div className="absolute indicator w-[170px] h-[44px] my-auto mx-auto top-0 bottom-0 bg-white rounded-[10px]"></div>
-
-            <button
-              role="tab"
-              aria-selected="true"
-              aria-controls="panel-1"
-              id="tab-1"
-              tabIndex="0"
-              className="relative block h-10 px-6 tab rounded-full"
-              onClick={() => handleTabClick("staff")}
-            >
-              <span className="text-custom-green-dark font-semibold text-[12px] md:text-[14px] lg:text-[15px]">
-                Staff Account
-              </span>
-            </button>
-
-            <button
-              role="tab"
-              aria-selected="false"
-              aria-controls="panel-2"
-              id="tab-2"
-              tabIndex="-1"
-              className="relative block h-10 px-6 tab rounded-full"
-              onClick={() => handleTabClick("master")}
-            >
-              <span className="text-custom-green-dark font-semibold text-[12px] md:text-[14px] lg:text-[15px]">
-                Master Account
-              </span>
-            </button>
           </div>
 
           <form

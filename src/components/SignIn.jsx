@@ -32,7 +32,7 @@ function SignIn() {
             <img className="h-7 md:h-8 lg:h-11" src={logo} alt="" />
           </div>
 
-          <div className="text-center text-custom-green-dark">
+          <div className="text-center text-custom-green-80">
             <h2 className="text-[18px] md:text-xl lg:text-2xl font-bold">Enter Your Account</h2>
             <p className="text-[10px] md:text-[12px] lg:text-[14px] font-medium opacity-60">
               Welcome Back, Please enter Your details
